@@ -534,6 +534,11 @@ class HighrisePerson {
         return $this->customFields;
     }
 
+    public function getCustomField($subject_field_id) {
+        return $this->customFields[$subject_field_id];
+    }
+
+
     /**
      * 
      * @return \Highrise\Resources\HighriseCompany
