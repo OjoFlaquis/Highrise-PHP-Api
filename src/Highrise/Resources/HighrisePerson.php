@@ -274,6 +274,16 @@ class HighrisePerson {
 
         $this->loadContactDataFromXMLObject($xml_obj->{'contact-data'});
         $this->loadTagsFromXMLObject($xml_obj->{'tags'});
+        $this->loadCustomFieldsFromXMLObject($xml_obj->{'subject_datas'});
+    }
+
+    public function loadCustomFieldsFromXMLObject($xml_obj) {
+        $this->customFields = array();
+        if (count($xml_obj->{'subject_data'}) > 0) {
+            foreach ($xml_obj->{'subject_data'} as $value) {
+                $this->setCustomField((int) $value->{'subject_field_id'}, (string) $value->{'value'});
+            }
+        }
     }
 
     public function loadTagsFromXMLObject($xml_obj) {
